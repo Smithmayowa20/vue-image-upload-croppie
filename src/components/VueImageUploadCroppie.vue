@@ -62,6 +62,29 @@ export default {
       })
       this.image = this.defaultImage
       this.setUpCroppie()
+      document.addEventListener('drop', function (event) {
+        // prevent default to allow drop
+        event.preventDefault()
+        if (event.target.className === 'cr-boundary') {
+          console.log(event.dataTransfer.files[0])
+          const file = event.dataTransfer.files[0]
+
+		  const reader = new FileReader()
+
+          reader.addEventListener("load", function () {
+            // convert image file to base64 string
+            console.log(reader.result)
+            this.image = String(reader.result)
+            console.log(this.image)
+          }, false)
+
+          reader.readAsDataURL(file)
+        }
+      }, false)
+      document.addEventListener('dragover', function (event) {
+        // prevent default to allow drop
+        event.preventDefault()
+      }, false)
     },
     methods: {
         showModal() {
