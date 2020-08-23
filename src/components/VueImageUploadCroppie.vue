@@ -3,7 +3,7 @@
     <div class="container">
         <vodal :show="show" animation="fade" @hide="show = false" :height="height + 400" :width="width + 300">
             <div class="vodal-header">{{ trans['cropImage'] }}</div>
-            <div id="croppie" class="vodal-body"></div>
+            <div id="croppie" class="vodal-body" v-cloak @drop.prevent="setUpFileUploader" @dragover.prevent></div>
             <div class="vodal-footer">
               <button class="vodal-cancel-btn" @click="emitUpload">{{ trans['chooseImage'] }}</button>
               <button class="vodal-confirm-btn" @click="cropeImage">{{ trans['confirmCutting'] }}</button>
@@ -62,29 +62,6 @@ export default {
       })
       this.image = this.defaultImage
       this.setUpCroppie()
-      document.addEventListener('drop', function (event) {
-        // prevent default to allow drop
-        event.preventDefault()
-        if (event.target.className === 'cr-boundary') {
-          console.log(event.dataTransfer.files[0])
-          const file = event.dataTransfer.files[0]
-
-		  const reader = new FileReader()
-
-          reader.addEventListener("load", function () {
-            // convert image file to base64 string
-            console.log(reader.result)
-            this.image = String(reader.result)
-            console.log(this.image)
-          }, false)
-
-          reader.readAsDataURL(file)
-        }
-      }, false)
-      document.addEventListener('dragover', function (event) {
-        // prevent default to allow drop
-        event.preventDefault()
-      }, false)
     },
     methods: {
         showModal() {
