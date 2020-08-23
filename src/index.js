@@ -1,7 +1,7 @@
-import VueImageUploadCroppie from './components/VueImageUploadCroppie'
+import VueImageUploadCroppie from './components/VueImageUploadCroppiee'
 
-export default VueImageUploadCroppie;
+export default VueImageUploadCroppiee;
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component('VueImageUploadCroppie', VueImageUploadCroppie);
+  window.Vue.component('VueImageUploadCroppiee', VueImageUploadCroppiee);
 }

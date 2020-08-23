@@ -1,12 +1,12 @@
 <template>
   <div id="app" style="text-align: center">
     <img :src="defaultImage" style="width: 100px;height: 100px">
-    <VueImageUploadCroppie :defaultImage.sync="defaultImage" :height="100" :width="100" :circle="true" :trans="trans"></VueImageUploadCroppie>
+    <VueImageUploadCroppiee :defaultImage.sync="defaultImage" :height="100" :width="100" :circle="true" :trans="trans"></VueImageUploadCroppie>
   </div>
 </template>
 
 <script>
-import VueImageUploadCroppie from './components/VueImageUploadCroppie'
+import VueImageUploadCroppiee from './components/VueImageUploadCroppiee'
 export default {
   name: 'app',
   data() {
@@ -27,7 +27,7 @@ export default {
       }
   },
   components: {
-    VueImageUploadCroppie
+    VueImageUploadCroppiee
   }
 }
 </script>
